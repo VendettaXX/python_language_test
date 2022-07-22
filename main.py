@@ -4,13 +4,42 @@
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+# python classmethod test
+import string
+import time
 
 
-# Press the green button in the gutter to run the script.
+
+class Base:
+    year = 0
+    day = 0
+    month = 0
+
+    def __init__(self, year, month, day):
+        self.year = year
+        self.month = month
+        self.day = day
+        print(f'year is {year},month is {month},day is {day}')
+
+    def __repr__(self):
+        print(f'year is {self.year},month is {self.month},day is {self.day}')
+
+    # Press the green button in the gutter to run the script.
+
+
+class Derived(Base):
+    # def __init__(self, year, month, day):
+    #     print(f'this is Derived construction')
+
+    @classmethod
+    def get_data(cls, string_data):
+        year, month, day = map(int, string_data.split('-'))
+        data1 = cls(year, month, day)
+        return data1
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    d = Derived.get_data("2016-08-01")
+    string.ascii_letters()
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
